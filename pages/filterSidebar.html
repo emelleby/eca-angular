@@ -1,11 +1,15 @@
 <div>
-	<div class="btn-group sidebar-buttons">
-		<div  class="btn btn-block btn-info" ng-repeat="role in data.ecas | unique: 'category'">
-			<label>
-				<md-checkbox type="checkbox" id="role.category" checklist-model="categories.roles"
-					checklist-value="{{role.category}}" /><i></i> {{role.category}}			
-			</label>
-		</div>
+	<div class="demo">
+		
+		<label class="md-checkbox block" ng-repeat="role in data.ecas | unique: 'category'">
+				<input class="md-checkbox block" type="checkbox" id="role.category" checklist-model="categories.roles"
+					checklist-value="{{role.category}}" /> 
+			<span class="md-checkbox--fake"></span>
+			<div>
+				{{ role.category }}
+			</div>
+		</label>
+		
 		<div class="col-xs-12">
           <h3>categories.roles</h3>
           <pre>{{categories.roles|json}}</pre>
