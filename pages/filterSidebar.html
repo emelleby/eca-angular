@@ -1,18 +1,18 @@
 <div>
 	<div class="demo">
 		
-		<label class="md-checkbox block" ng-repeat="role in data.ecas | unique: 'category' as results">
-				<input class="md-checkbox block" type="checkbox" id="{{role.category}}" checklist-model="categories.roles"
-					checklist-value="role.category" /> 
+		<label class="md-checkbox block" ng-repeat="eca in data.ecas | unique: 'category' as results">
+				<input class="md-checkbox block" type="checkbox" id="{{eca.category}}" checklist-model="categories"
+					checklist-value="eca.category" ng-checked="true"/> 
 			<span class="md-checkbox--fake"></span>
 			<div>
-				{{ role.category }}
+				{{ eca.category }}
 			</div>
 		</label>
 		
 		<div class="col-xs-12">
-          <h3>categories.roles</h3>
-          <pre>{{categories.roles|json}}</pre>
+          <h3>categories</h3>
+          <pre>{{categories | json}}</pre>
         </div>
 		
 		

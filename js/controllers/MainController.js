@@ -9,13 +9,11 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 			$scope.data = response.data;
 			//console.log($scope.data);
 		})
-		$scope.filText2 = [];
+		
+		$scope.categories = [];
+	  	
 	
-		$scope.categories = {
-			roles: []
-	  	};
-	
-	$scope.$watch(function () {
+	//$scope.$watchCollection(function () {
 		// $scope.filText2 = angular.copy($scope.categories.roles);	
 		// code here
 		// if (category in in categories array)
@@ -23,33 +21,29 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 		
 		//else
 			// hide item
-			});
+		//	});
 
 	 $scope.checkAll = function() {
-		  $scope.categories.roles = [];
+		  $scope.categories = [];
 		  angular.forEach($scope.results, function(value, key) {
 			  this.push($scope.results[key].category);
-			}, $scope.categories.roles);
-		  
-		// $scope.kategori = angular.copy($scope.categories.roles);
-		//$scope.categories.roles.push('Arts');
+			}, $scope.categories);
+
 	  };
 	
 	  $scope.uncheckAll = function() {
-		$scope.categories.roles = [];
+		$scope.categories = [];
 	  };
 
 	  $scope.checkFirst = function() {
-		$scope.categories.roles.splice(0, $scope.categories.roles.length); 
-		$scope.categories.roles.push('guest');
+		$scope.categories.splice(0, $scope.categories.length); 
+		$scope.categories.push('guest');
 	  };
 	
 	 $scope.log = function() {
-		console.log($scope.categories.roles);
+		 console.log($scope.categories);
 		 console.log($scope.data);
-	angular.copy($scope.categories.roles, $scope.filText2);
 		 console.log($scope.results);
-		 console.log($scope.filtText2);
 	  };
 	
 	// Tabs from activitycontroller
@@ -95,7 +89,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 		var promise = $timeout(function () {
 			angular.forEach($scope.results, function(value, key) {
 				  this.push($scope.results[key].category);
-					}, $scope.categories.roles);
+					}, $scope.categories);
 			
 		}, 1000);
 			  
