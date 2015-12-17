@@ -1,5 +1,5 @@
 <!-- This is the main Content area -->
-	  <div class="main ng-cloak" id="main" ng-controller="ActivityController"><!-- Adding the controller to this div/part of the page-->
+	  <div class="main ng-cloak" id="main"><!-- Adding the controller( ng-controller="ActivityController") to this div/part of the page-->
 	      <div class="col-md-12 tight">
 			<button ng-click="toggleDetails()" class="btn btn-xs btn-primary pull-right" type="button">
 				{{showDetails ? 'Hide Details' : 'Show Details'}}
@@ -29,7 +29,7 @@
                       role="tab">Friday</a></li>
               </ul>
 			
-			  <div class="panel panel-info" ng-repeat="eca in data.ecas | filter:searchquery | filter:{day:filtText}">
+			  <div class="panel panel-info" ng-repeat="eca in data.ecas | filter:searchquery | filter:{day:filtText} | filter: { category: categories.roles }">
 				<div class="panel-heading">
 				<h3 class="panel-title">{{ eca.name }}<a href="javascript:void(0)" class="btn btn-info pull-right">Add this &raquo;</a></h3>
 
