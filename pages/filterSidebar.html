@@ -1,0 +1,52 @@
+<div>
+	<div class="btn-group sidebar-buttons">
+		<div  class="btn btn-block btn-info" ng-repeat="role in data.ecas | unique: 'category'">
+			<label>
+				<md-checkbox type="checkbox" id="role.category" checklist-model="categories.roles"
+					checklist-value="{{role.category}}" /><i></i> {{role.category}}			
+			</label>
+		</div>
+		<div class="col-xs-12">
+          <h3>categories.roles</h3>
+          <pre>{{categories.roles|json}}</pre>
+        </div>
+		
+		<button type="checkbox" id="tuesday" name="tuesday" class="btn btn-block btn-success">
+			<i class="mdi-navigation-check"></i> Tuesday
+		</button>
+		<button type="checkbox" id="wednesday" name="wednesday" class="btn btn-block btn-info">
+			<i></i> Wednesday
+		</button>
+		<button type="checkbox" id="thursday" name="thursday" class="btn btn-block btn-info">
+			<i></i> Thursday
+		</button>
+		<button type="checkbox" id="friday" name="friday" class="btn btn-block btn-info">
+			<i></i> Friday
+		</button>
+	</div>
+
+	<div class="checkbox" ng-repeat="eca in info.ecas | unique: 'category'">
+		<label>
+		  <input type="checkbox" ng-model="eca.category">1
+		  {{ eca.category }}
+		</label>
+	</div>
+	<div ng-repeat="role in data.ecas | unique: 'category'">
+		<label>
+		   <input type="checkbox" checklist-model="categories.roles" checklist-value="role.category"> {{role.category}}
+		</label>
+	</div>
+	<p>1 {{ data.year }}</p>
+	<p>2 {{ info.year }}</p>
+	
+	<p>3 {{ data.ecas[0].category }}</p>
+	<p>4 {{ info.ecas[0].category }}</p>
+	
+	<button ng-click="checkFirst()">Check first</button>
+	
+	<button ng-click="log()" style="margin-right: 10px">log object</button>
+	
+	
+</div>
+
+
