@@ -9,66 +9,85 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 			$scope.data = response.data;
 			//console.log($scope.data);
 		})
-		
-		$scope.categories = [];
-	  	
+		$scope.cost = '';
+		$scope.free = '';
+		$scope.selected = [];
 	
-	//$scope.$watchCollection(function () {
-		// $scope.filText2 = angular.copy($scope.categories.roles);	
-		// code here
-		// if (category in in categories array)
-		//	show item
+		$scope.freeEca = function (handle, varFree) {
+			if (handle === varFree){
+				return true;
+			}
+			else
+				return false;
+		};
 		
-		//else
-			// hide item
-		//	});
+		$scope.paidEca = function (handle, varPaid) {
+			if (handle === varPaid){
+				return true;
+			}
+			else
+				return false;
+		};
+	
+	
+		 $scope.toggle = function (item, list) {
+			var idx = list.indexOf(item.category);
+			if (idx > -1) list.splice(idx, 1);
+			else list.push(item.category);
+		  };
+
+		  $scope.exists = function (item, list) {
+			return list.indexOf(item.category) > -1;
+		  };
+  
+		// This one works like a charm filtering for the checkboxes
+		$scope.filterCategory = function(item) {
+        	return ($scope.selected.indexOf(item.category) !== -1);
+    	};  
 
 	 $scope.checkAll = function() {
-		  $scope.categories = [];
+		  $scope.selected = [];
 		  angular.forEach($scope.results, function(value, key) {
 			  this.push($scope.results[key].category);
-			}, $scope.categories);
+			}, $scope.selected);
 
 	  };
 	
 	  $scope.uncheckAll = function() {
-		$scope.categories = [];
+		$scope.selected = [];
 	  };
 
-	  $scope.checkFirst = function() {
-		$scope.categories.splice(0, $scope.categories.length); 
-		$scope.categories.push('guest');
-	  };
 	
 	 $scope.log = function() {
-		 console.log($scope.categories);
+		 console.log($scope.selected);
 		 console.log($scope.data);
 		 console.log($scope.results);
+		 console.log($scope.cost);
 	  };
 	
 	// Tabs from activitycontroller
 	
                   $scope.tab = 1;
 
-                  $scope.filtText = 'monday';
+                  $scope.filtText = 'Monday';
 
                   $scope.select = function(setTab) {
                     $scope.tab = setTab;
                     
                     if (setTab === 2) {
-                      $scope.filtText = "tuesday";
+                      $scope.filtText = "Tuesday";
                     }
                     else if (setTab === 3) {
-                      $scope.filtText = "wednesday";
+                      $scope.filtText = "Wednesday";
                     }
                     else if (setTab === 4) {
-                      $scope.filtText = "thursday";
+                      $scope.filtText = "Thursday";
                     }
 					  else if (setTab === 5) {
-                      $scope.filtText = "friday";
+                      $scope.filtText = "Friday";
                     }
                     else {
-                      $scope.filtText = "monday";
+                      $scope.filtText = "Monday";
                     }
                   };
 
@@ -81,18 +100,21 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
                   $scope.showDetails = !$scope.showDetails;
                 };
 	
-	
-		$scope.$watch(function () {
-			$scope.results = $scope.$eval("data.ecas | unique: 'category'");
-			});
-	
+		
 		var promise = $timeout(function () {
 			angular.forEach($scope.results, function(value, key) {
 				  this.push($scope.results[key].category);
-					}, $scope.categories);
-			
-		}, 1000);
+					}, $scope.selected);			
+			}, 1000);
 			  
-		
+$scope.$watch(function () {
+			$scope.results = $scope.$eval("data.ecas | unique: 'category'");
+			});
   
 }]);
+
+/* Filter for doing filtering in the controller with watch
+$scope.$watch(function () {
+			$scope.results = $scope.$eval("data.ecas | unique: 'category'");
+			});
+	*/

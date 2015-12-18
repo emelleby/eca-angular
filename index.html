@@ -14,13 +14,9 @@
 		<link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap-social.css" rel="stylesheet">
 	
-	<link href="bower_components/md-checkbox/md-checkbox.css" rel="stylesheet">
+ 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+	
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.css">
-<!--	Minified version - https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css -->
-				<!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
-				<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/roboto.min.css" rel="stylesheet">
-				<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css" rel="stylesheet">
 
 	<link href="css/mystyles.css" rel="stylesheet">
 
@@ -50,7 +46,7 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
 					<li>
-						<!-- Button group for weekdays-->
+						<!-- Button group for weekdays
 						<div class="btn-group" data-toggle="buttons">
 							<button type="checkbox" id="monday" name="monday" class="btn btn-success">
 								<i style="font-size: 1.1em;" class="mdi-navigation-check"></i>Monday
@@ -67,7 +63,7 @@
 							<button type="checkbox" id="friday" name="friday" class="btn btn-success">
 								<i style="font-size: 1.1em;" class="mdi-navigation-check"></i>Friday
 							</button>
-						</div>
+						</div> -->
 					</li>
 
 
@@ -94,7 +90,6 @@
 						<div class="form-group nav-search">
 							<input type="text" class="form-control" placeholder="Search" ng-model="searchquery">
 						</div>
-						<button type="submit" class="navbar-btn btn-primary">Search</button>
 					</form>
 				</ul>
 
@@ -105,9 +100,9 @@
 <!-- This is the left sidebar-->
 	<div class="row-offcanvas row-offcanvas-left">
 		<div id="sidebar" class="sidebar-offcanvas">
-				<div class="col-md-12">
-					<h3>Sidebar (fixed)</h3>
-					<p>{{ data.school }}</p>
+				<div class="col-md-12 tight">
+					<h4>Filters</h4>
+					<h5>Price</h5>
 					<!-- info attribute here is passing values from controller to the directive -->
 					<filter-sidebar data="data"></filter-sidebar>
 
@@ -201,6 +196,9 @@ console.log(day);
 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
 	 <!-- Include all compiled plugins (below), or include individual files as needed -->
 	 <script src="js/bootstrap.min.js"></script>
+	
+	 
+	
 	 <script src="js/script.js"></script>
 	 <script>
 			 $(document).ready(function() {
@@ -211,9 +209,27 @@ console.log(day);
 
 	 <!-- load angular via CDN -->
 	 <!-- <script src="//code.angularjs.org/1.3.0-rc.1/angular.min.js"></script> -->
-	 <script src="./bower_components/angular/angular.min.js"></script>
+	 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	 <script src="https://code.angularjs.org/1.4.8/angular-route.min.js"></script>
 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.js"></script>
+	
+	<!-- Angular Material requires Angular.js Libraries -->
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+  
+  <!-- Your application bootstrap  -->
+  <script type="text/javascript">    
+    /**
+     * You must include the dependency on 'ngMaterial' 
+     */
+    angular.module('BlankApp', ['ngMaterial']);
+  </script>
+	
 
     <!-- Modules -->
     <script src="js/app.js"></script>
