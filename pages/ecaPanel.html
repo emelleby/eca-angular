@@ -29,7 +29,8 @@
                       role="tab">Friday</a></li>
               </ul>
 			
-			  <div class="panel panel-info" ng-repeat="eca in data.ecas | filter:searchquery | filter:{day:filtText} | filter: { category: categories.roles }">
+			  <div class="panel panel-info" ng-show="selected" ng-model="selected"
+				   ng-repeat="eca in data.ecas | filter:searchquery | filter:{ day:filtText } | filter:filterCategory |filter: money">
 				<div class="panel-heading">
 				<h3 class="panel-title">{{ eca.name }}<a href="javascript:void(0)" class="btn btn-info pull-right">Add this &raquo;</a></h3>
 

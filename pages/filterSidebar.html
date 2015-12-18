@@ -1,7 +1,74 @@
 <div>
 	<div class="demo">
+		<div>
+			<div>
+			  <label type="checkbox" class="btn btn-success active" style="width: 48%; margin: 0 auto;" id="free" ng-model="search.price" ng-true-value="free" ng-false-value="">
+				  <i class="fa fa-check-square-o"></i> Free
+			</label>
+			  <label type="checkbox" class="btn btn-success active" style="width: 48%; margin: 0 auto;" id="paid" ng-model="search.currency" ng-true-value="THB" ng-false-value="">
+					<i class="fa fa-check-square-o"></i> Paid
+			  </label>
+			</div>
+		</div>
+			<!--	 ng-model="search.price" ng-true-value="" ng-false-value="free"> -->	
+		<h3>Categories</h3>
+		<div flex="100">
+		  <div>
+			<!--
+			  In IE, we cannot apply flex directly to <fieldset>
+			  @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
+			-->
+			<fieldset class="standard">
+
+			  <div layout="row" layout-wrap="" flex="">
+				<div flex="100" ng-repeat="eca in data.ecas | unique: 'category' as results">
+				  <md-checkbox ng-checked="exists(eca, selected)" ng-click="toggle(eca, selected)">
+					{{ eca.category }} <span ng-if="exists(eca, selected)"></span>
+				  </md-checkbox>
+				</div>
+			  </div>
+			</fieldset>
+		  </div>
+		</div>
+		<div class="col-xs-12">
+          <h5>Active filters</h5>
+          <pre>{{selected | json}}</pre>
+        </div>
 		
-		<label class="md-checkbox block" ng-repeat="eca in data.ecas | unique: 'category' as results">
+		<div class="col-xs-12">
+          <h5>Active filters</h5>
+          <pre>{{cost }}</pre>
+        </div>
+		
+	<ul>
+		<li><small>{{ filtText }}</small></li>
+		<li ng-repeat="category in categories"><small>{{ category }}</small></li>
+	</ul>
+		
+	<div>
+	  <button class="btn btn-warning btn-block" style="margin: 0 auto;" ng-click="uncheckAll()"
+		   id="clear"><i class="fa "></i> Clear filters
+	  </button>
+	  <label class="btn btn-primary btn-block" style="margin: 0 auto;" ng-click="checkAll()" 
+		   name="free"><i class="fa "></i> Check all
+	  </label>
+
+	</div>
+		
+	<button ng-click="uncheckAll()">clear</button>
+	<button ng-click="checkAll()">check</button>
+	
+
+<p></p>
+	
+	<button ng-click="log()" style="margin-right: 10px">log object</button>
+		<input type="checkbox" ng-model="cost" ng-true-value="'Yes'" ng-false-value="'No'">
+		<input type="checkbox" ng-model="cost" ng-true-value="'ja'" ng-false-value="'Nei'">
+	
+	
+</div>
+
+<label class="md-checkbox block" ng-hide="cost == ('Yes' || 'ja')" ng-repeat="eca in data.ecas | unique: 'category' as results">
 				<input class="md-checkbox block" type="checkbox" id="{{eca.category}}" checklist-model="categories"
 					checklist-value="eca.category" ng-checked="true"/> 
 			<span class="md-checkbox--fake"></span>
@@ -9,28 +76,3 @@
 				{{ eca.category }}
 			</div>
 		</label>
-		
-		<div class="col-xs-12">
-          <h3>categories</h3>
-          <pre>{{categories | json}}</pre>
-        </div>
-		
-		
-	<p>1 {{ data.year }}</p>
-	<p>2 {{ info.year }}</p>
-	
-	<p>3 {{ data.ecas[0].category }}</p>
-	<p>4 {{ info.ecas[0].category }}</p>
-	
-	<button ng-click="checkFirst()">Check first</button>
-		
-	<button ng-click="checkAll()">Check all</button>
-		
-	<button ng-click="uncheckAll()">Uncheck all</button>
-	
-	<button ng-click="log()" style="margin-right: 10px">log object</button>
-	
-	
-</div>
-
-
