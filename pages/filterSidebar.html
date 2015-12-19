@@ -3,11 +3,11 @@
 		<div>
 			<div>
 			  <md-button type="checkbox" class="md-raised md-primary" checked="true" style="width: 48%; margin: 0 auto;"
-					 id="free" ng-model="free" ng-true-value="free" ng-false-value="">
+					 id="free" ng-model="search.currency" ng-true-value="" ng-false-value="'THB'">
 				  <i class="fa fa-check-square-o"></i> Free
 				</md-button>
 			  <md-button type="checkbox" class="md-raised md-primary" checked="true" style="width: 48%; margin: 0 auto;"
-						 id="paid" ng-model="search.currency" ng-true-value="THB" ng-false-value="">
+						 id="paid" ng-model="search.price" ng-true-value="" ng-false-value="'Free'">
 					<i class="fa fa-check-square-o"></i> Paid
 			  </md-button>
 			</div>
@@ -64,13 +64,13 @@
 <p></p>
 		 <md-button class="md-raised md-primary">Primary</md-button>
 	
-	<button ng-click="log()" style="margin-right: 10px">log object</button>
-		<label>Paid
+	<button ng-click="log()" style="margin-right: 10px">log object</button><br />
+<!--		<label>Paid
 			<input type="checkbox" ng-model="search.price" ng-true-value="" ng-false-value="'Free'">
 		</label>
 		<label>Free
 			<input type="checkbox" ng-model="search.currency" ng-true-value="" ng-false-value="'THB'">
-		</label>
+		</label> -->
 	
 </div>
 
