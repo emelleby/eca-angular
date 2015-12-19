@@ -104,10 +104,11 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
                   $scope.isSelected = function (checkTab) {
                     return ($scope.tab === checkTab);
                   };
-	
-	              $scope.toggleModel = function(id) {
+		
+				/*  $scope.toggleModel = function(id) {
                   	$scope.toggleModel.id = !$scope.toggleModel.id;
-					  console.log($scope.toggleModel.id);
+					  console.log('id ' + id);
+					  console.log('toggleModel ' + $scope.toggleModel);
                 };
 
                   $scope.showDetails = false;
@@ -115,7 +116,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
                   $scope.showDetails = !$scope.showDetails;
 					  console.log($scope.showDetails);
                 };
-	
+	*/
 		
 		var promise = $timeout(function () {
 			angular.forEach($scope.results, function(value, key) {
