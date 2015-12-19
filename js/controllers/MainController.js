@@ -12,24 +12,18 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 		$scope.cost = '';
 		$scope.free = '';
 		$scope.selected = [];
+		$scope.myEcas = [];
 	
-		$scope.freeEca = function (handle, varFree) {
-			if (handle === varFree){
-				return true;
-			}
-			else
-				return false;
-		};
-		
-		$scope.paidEca = function (handle, varPaid) {
-			if (handle === varPaid){
-				return true;
-			}
-			else
-				return false;
-		};
+						
+		// add Eca to the array of MyEca if it exists remove it.
+		$scope.addEca = function (item, list) {
+			var idx = list.indexOf(item);
+			if (idx > -1) list.splice(idx, 1);
+			else list.push(item);
+			// console.log(item);
+		  };
 	
-	
+		// add filter to the selected list/array
 		 $scope.toggle = function (item, list) {
 			var idx = list.indexOf(item.category);
 			if (idx > -1) list.splice(idx, 1);
@@ -43,21 +37,20 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 		// This one works like a charm filtering for the checkboxes
 		$scope.filterCategory = function(item) {
         	return ($scope.selected.indexOf(item.category) !== -1);
-    	};  
+    	}; 
+	
+	 $scope.uncheckAll = function() {
+		$scope.selected = [];
+	  };
 
 	 $scope.checkAll = function() {
 		  $scope.selected = [];
 		  angular.forEach($scope.results, function(value, key) {
 			  this.push($scope.results[key].category);
 			}, $scope.selected);
-
 	  };
 	
-	  $scope.uncheckAll = function() {
-		$scope.selected = [];
-	  };
-
-	
+	 
 	 $scope.log = function() {
 		 console.log($scope.selected);
 		 console.log($scope.data);
@@ -77,14 +70,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
       if ( old + 1 && (old != current)) $log.debug('Goodbye ' + previous.title + '!');
       if ( current + 1 )                $log.debug('Hello ' + selected.title + '!');
     });
-    $scope.addTab = function (title, view) {
-      view = view || title + " Content View";
-      tabs.push({ title: title, content: view, disabled: false});
-    };
-    $scope.removeTab = function (tab) {
-      var index = tabs.indexOf(tab);
-      tabs.splice(index, 1);
-    };
+    
 	*/
 	// Tabs from Bootstrap
 	
@@ -134,7 +120,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 					}, $scope.selected);			
 			}, 1000);
 			  
-$scope.$watch(function () {
+		$scope.$watch(function () {
 			$scope.results = $scope.$eval("data.ecas | unique: 'category'");
 			});
   

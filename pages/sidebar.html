@@ -13,7 +13,7 @@
 								</div>
 								<div id="accordion-sample-one" class="panel-collapse collapse in">
 									<div class="panel-body">
-										Sample content
+										{{name}}
 									</div>
 								</div>
 							</div>
@@ -21,13 +21,24 @@
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-sample-two">
-											Heading Two
+											Thursday
 										</a>
 									</h4>
 								</div>
 								<div id="accordion-sample-two" class="panel-collapse collapse">
 									<div class="panel-body">
-										Sample content
+										
+										<div ng-repeat="activity in myEcas | filter : {day: Thursday} as number">
+										
+											<p>{{activity.name}}</p>
+										</div>
+										
+										<div ng-if="number.length > 1" class="alert alert-warning alert-dismissible" role="alert">
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           <strong>Notice!</strong> Please <a href="tel:+852 1234 5678" type="tel" value="+852 1234 5678" class="alert-link">call us </a>for more than 6 guests.
+         </div>
+										
+										
 									</div>
 								</div>
 							</div>

@@ -98,10 +98,9 @@ address{
 .panel-heading .panel-title {
 	color: #333;
 }
-.panel-heading .btn {
-	position: relative;
-    top: -10px;
-    right: -15px;
+
+.panel-body {
+    padding: 5px;
 }
 
 .panel .table {
@@ -111,8 +110,15 @@ address{
 .panel-footer th {
 	width: 25%;
 }
+
+.panel-footer {
+	margin-bottom: 0;
+	padding: 0 10px;
+}
+
 .navbar-inverse {
      background: #303F9F;
+	z-index:1; /*Add this*/
 }
 
 .navbar-inverse .navbar-nav > .active > a,
@@ -312,4 +318,15 @@ body,html,.row-offcanvas {
 
 .md-tab.md-active {
 	background: #eee;
+}
+
+.md-button {
+	margin: 0;
+}
+.fixed {
+
+}
+
+md-content {
+	padding-bottom: 2px;
 }
