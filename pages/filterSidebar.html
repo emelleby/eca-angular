@@ -2,18 +2,19 @@
 	<div class="demo">
 		<div>
 			<div>
-			  <md-button type="checkbox" class="md-raised md-primary" checked="true" style="width: 48%; margin: 0 auto;"
+			  <md-checkbox type="checkbox" class="md-primary" checked="true" style="width: 48%; margin: 0 auto;"
 					 id="free" ng-model="search.currency" ng-true-value="" ng-false-value="'THB'">
-				  <i class="fa fa-check-square-o"></i> Free
-				</md-button>
-			  <md-button type="checkbox" class="md-raised md-primary" checked="true" style="width: 48%; margin: 0 auto;"
+				   Free
+				</md-checkbox>
+			  <md-checkbox type="checkbox" class="md-primary" checked="true" style="width: 48%; margin: 0 auto;"
 						 id="paid" ng-model="search.price" ng-true-value="" ng-false-value="'Free'">
-					<i class="fa fa-check-square-o"></i> Paid
-			  </md-button>
+					Paid
+			  </md-checkbox>
 			</div>
 		</div>
+		<hr />
 			<!--	 ng-model="search.price" ng-true-value="" ng-false-value="free"> -->	
-		<h3>Categories</h3>
+		<h4>Categories</h4>
 		<div flex="100">
 		  <div>
 			<!--
@@ -32,7 +33,10 @@
 			</fieldset>
 		  </div>
 		</div>
-		<div class="col-xs-12">
+		<!--	<hr />
+		<h5>Active filters</h5>
+	
+		<div class="col-xs-12">			
           <h5>Active filters</h5>
           <pre>{{selected | json}}</pre>
         </div>
@@ -44,9 +48,9 @@
 		
 	<ul>
 		<li><small>{{ filtText }}</small></li>
-		<li ng-repeat="category in categories"><small>{{ category }}</small></li>
+		<li ng-repeat="category in selected"><small>{{ category }}</small></li>
 	</ul>
-		
+		-->
 	<div>
 	  <button class="btn btn-warning btn-block" ng-click="uncheckAll()"
 		   id="clear"><i class="fa "></i> Clear filters
@@ -56,7 +60,8 @@
 	  </label>
 
 	</div>
-		
+	
+<!--
 	<button ng-click="uncheckAll()">clear</button>
 	<button ng-click="checkAll()">check</button>
 	
@@ -65,13 +70,14 @@
 		 <md-button class="md-raised md-primary">Primary</md-button>
 	
 	<button ng-click="log()" style="margin-right: 10px">log object</button><br />
+-->
 <!--		<label>Paid
 			<input type="checkbox" ng-model="search.price" ng-true-value="" ng-false-value="'Free'">
 		</label>
 		<label>Free
 			<input type="checkbox" ng-model="search.currency" ng-true-value="" ng-false-value="'THB'">
 		</label> -->
-	
+<!--	
 </div>
 
 <label class="md-checkbox block" ng-show="cost == 'Yes'" ng-repeat="eca in data.ecas | unique: 'category' as results">
@@ -82,3 +88,4 @@
 				{{ eca.category }}
 			</div>
 		</label>
+-->

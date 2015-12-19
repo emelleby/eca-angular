@@ -3,45 +3,137 @@
 		      <div class="col-md-12">
 		        <h3>Sidebar (fixed-right)</h3>
 						<div class="panel-group" id="accordion-sample">
-							<div class="panel panel-default">
+							
+							<div class="panel panel-info">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-sample-one">
-											Heading One
+										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-monday">
+											Monday
 										</a>
 									</h4>
 								</div>
-								<div id="accordion-sample-one" class="panel-collapse collapse in">
+								<div id="accordion-monday" class="panel-collapse collapse">
 									<div class="panel-body">
-										{{name}}
+										
+										<div ng-repeat="activity in myEcas | filter: {day : 'Monday'} as monday">										
+											<p>{{ activity.name }}</p>
+										</div>
+										
+										<div ng-if="monday.length > 1" class="alert alert-warning alert-dismissible" role="alert">
+										    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											   <span aria-hidden="true">&times;</span>
+											</button>
+										    <strong>Notice!</strong> You have overlapping activities!
+										</div>										
 									</div>
 								</div>
 							</div>
-							<div class="panel panel-default">
+							
+							<div class="panel panel-info">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-sample-two">
-											Thursday
+										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-tuesday">
+											Tuesday
 										</a>
 									</h4>
 								</div>
-								<div id="accordion-sample-two" class="panel-collapse collapse">
+								<div id="accordion-tuesday" class="panel-collapse collapse">
 									<div class="panel-body">
 										
-										<div ng-repeat="activity in myEcas | filter : {day: Thursday} as number">
+										<div ng-repeat="activity in myEcas | filter : {day : 'Tuesday'} as tuesday">
+										
+											<p>{{ activity.name }}</p>
+										</div>
+										
+										<div ng-if="tuesday.length > 1" class="alert alert-warning alert-dismissible" role="alert">
+										    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											   <span aria-hidden="true">&times;</span>
+											</button>
+										    <strong>Notice!</strong> You have overlapping activities!
+										</div>										
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-wednesday">
+											Wednesday
+										</a>
+									</h4>
+								</div>
+								<div id="accordion-wednesday" class="panel-collapse collapse">
+									<div class="panel-body">
+										
+										<div ng-repeat="activity in myEcas | filter : {day: 'Wednesday'} as wednesday">
 										
 											<p>{{activity.name}}</p>
 										</div>
 										
-										<div ng-if="number.length > 1" class="alert alert-warning alert-dismissible" role="alert">
-           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-           <strong>Notice!</strong> Please <a href="tel:+852 1234 5678" type="tel" value="+852 1234 5678" class="alert-link">call us </a>for more than 6 guests.
-         </div>
-										
-										
+										<div ng-if="wednesday.length > 1" class="alert alert-warning alert-dismissible" role="alert">
+										    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											   <span aria-hidden="true">&times;</span>
+											</button>
+										    <strong>Notice!</strong> You have overlapping activities!
+										</div>										
 									</div>
 								</div>
 							</div>
+							
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-thursday">
+											Thursday
+										</a>
+									</h4>
+								</div>
+								<div id="accordion-thursday" class="panel-collapse collapse">
+									<div class="panel-body">
+										
+										<div ng-repeat="activity in myEcas | filter : {day: 'Thursday'} as thursday">
+										
+											<p>{{activity.name}}</p>
+										</div>
+										
+										<div ng-if="thursday.length > 1" class="alert alert-warning alert-dismissible" role="alert">
+										    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											   <span aria-hidden="true">&times;</span>
+											</button>
+										    <strong>Notice!</strong> You have overlapping activities!
+										</div>										
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-friday">
+											Friday
+										</a>
+									</h4>
+								</div>
+								<div id="accordion-friday" class="panel-collapse collapse">
+									<div class="panel-body">
+										
+										<div ng-repeat="activity in myEcas | filter : {day: 'Friday'} as friday">
+										
+											<p>{{activity.name}}</p>
+										</div>
+										
+										<div ng-if="friday.length > 1" class="alert alert-warning alert-dismissible" role="alert">
+										    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											   <span aria-hidden="true">&times;</span>
+											</button>
+										    <strong>Notice!</strong> You have overlapping activities!
+										</div>										
+									</div>
+								</div>
+							</div>
+							
+							
 						</div>
 		      </div>
+			  	
 		  </div>

@@ -5,9 +5,11 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 	
   $scope.title = 'Fixed + Fluid Bootstrap Template with Off-canvas Sidebar';
 	
-	$http.get('../data/test.json').then(function (response) {
+	$scope.data = [];
+	
+	$http.get('../data/ecadata.json').then(function (response) {
 			$scope.data = response.data;
-			//console.log($scope.data);
+			console.log($scope.data);
 		})
 		$scope.cost = '';
 		$scope.free = '';
@@ -20,7 +22,8 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 			var idx = list.indexOf(item);
 			if (idx > -1) list.splice(idx, 1);
 			else list.push(item);
-			// console.log(item);
+			console.log(item);
+			console.log($scope.myEcas);
 		  };
 	
 		// add filter to the selected list/array
