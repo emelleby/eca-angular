@@ -1,25 +1,23 @@
 <!-- This is the right sidebar for XL screen-->
 		  <div class="visible-lg" id="sidebar-right">
 		      <div class="col-md-12">
-		        <h3>Sidebar (fixed-right)</h3>
+		        <h3>My short list</h3>
 						<div class="panel-group" id="accordion-sample">
-							
-							<div class="panel panel-info">
+							<div class="panel panel-info" ng-repeat="weekday in data.ecas | unique: 'day' as daysResults ">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-monday">
-											Monday
-										</a>
+										{{weekday.day}}										
 									</h4>
 								</div>
-								<div id="accordion-monday" class="panel-collapse collapse">
+								<div id="accordion-tuesday">
 									<div class="panel-body">
 										
-										<div ng-repeat="activity in myEcas | filter: {day : 'Monday'} as monday">										
+										<div ng-repeat="activity in myEcas | filter: {day : weekday.day} as day">
+										
 											<p>{{ activity.name }}</p>
 										</div>
 										
-										<div ng-if="monday.length > 1" class="alert alert-warning alert-dismissible" role="alert">
+										<div ng-if="day.length > 1" class="alert alert-warning alert-dismissible" role="alert">
 										    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 											   <span aria-hidden="true">&times;</span>
 											</button>
@@ -28,16 +26,15 @@
 									</div>
 								</div>
 							</div>
-							
+
+							<!--
 							<div class="panel panel-info">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-tuesday">
-											Tuesday
-										</a>
+										Tuesday										
 									</h4>
 								</div>
-								<div id="accordion-tuesday" class="panel-collapse collapse">
+								<div id="accordion-tuesday">
 									<div class="panel-body">
 										
 										<div ng-repeat="activity in myEcas | filter : {day : 'Tuesday'} as tuesday">
@@ -130,7 +127,7 @@
 										</div>										
 									</div>
 								</div>
-							</div>
+							</div> -->
 							
 							
 						</div>

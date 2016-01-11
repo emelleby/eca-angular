@@ -1,5 +1,5 @@
 {
-  "edited" : [
+  "ecas" : [
     {
       "id" : 1,
       "header" : "Chelsea FC Soccer School Bangkok",
@@ -378,27 +378,7 @@
       "desc6" : "KIT- Full Adidas CFC SS Kit Available for 2150 Baht",
       "link" : "http://www.nist.ac.th/ecas/sports/chelsea-fc-nist-football-programme/"
     },
-    {
-      "id" : 19,
-      "header" : "CFC – Optional Kit Package",
-      "category" : "Chelsea FC",
-      "name" : "Chelsea FC Soccer School Bangkok Kit",
-      "currency" : "THB",
-      "price" : "2150.0",
-      "dates" : "05 Sep - 19 Dec",
-      "grade" : "E2 - Year 13",
-      "availability" : "9914 seats available",
-      "day" : "",
-      "time" : "",
-      "image" : "",
-      "desc1" : "",
-      "desc2" : "",
-      "desc3" : "",
-      "desc4" : "",
-      "desc5" : "",
-      "desc6" : "",
-      "link" : ""
-    },
+   
     {
       "id" : 20,
       "header" : "Monday ECA Arts",
@@ -4084,7 +4064,7 @@
       "dates" : "31 Aug - 30 Oct",
       "grade" : "Year 7 - Year 13",
       "availability" : "3 seats available",
-      "day" : "Day A",
+      "day" : "Friday",
       "time" : "11:45 - 12:05",
       "image" : "http://i1272.photobucket.com/albums/y386/lapasradak/Art%20Relief%20Crew_zps9udbthok.jpg",
       "desc1" : "Art Relief Crew is a service group that works with Art ReliefInternational, an organization based in Chiang Mai which works to transformthe lives of struggling social groups by offering them the opportunity toexpress themselves through an artistic lens.",

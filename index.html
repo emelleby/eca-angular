@@ -46,6 +46,8 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
 					<li>
+						
+						
 						<!-- Button group for weekdays
 						<div class="btn-group" data-toggle="buttons">
 							<button type="checkbox" id="monday" name="monday" class="btn btn-success">
@@ -65,9 +67,13 @@
 							</button>
 						</div> -->
 					</li>
+ 					
+                    <li><a data-toggle="modal" data-target="#shortList"  class="btn btn-link"><i class="fa fa-list"></i> My Short list</a></li>
+					<li><a data-toggle="modal" data-target="#instructions"  class="btn btn-link"><i class="fa fa-list"></i> Instructions</a></li>
 
-
-					<li class="dropdown">
+					
+					
+		<!--			<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                          role="button" aria-haspopup="true" aria-expanded="false">
                          Menu <span class="caret"></span></a>
@@ -83,7 +89,7 @@
 							<li><a href="#">Weekend Brunch</a></li>
 							<li><a href="eca.html">ECA-Catalog</a></li>
 						</ul>
-					</li>
+					</li> -->
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
@@ -96,7 +102,103 @@
 			</div>
 		</div>
 	</nav>
+	
+<!-- Instructions Modal, <ng-include src="'instructionsModal.html'"></ng-include> -->
+	
+	<div id="instructions" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">ECA Catalog Instructions</h2>
+			</div>
+			<div class="modal-body">
+				<div class="alert alert-warning" role="alert"><p><strong>Important:</strong>
+					Please read all the below information before launching your child's ECA sign up</p>
+				</div>
 
+				<h3>2015-2016 ECA Sessions</h3>
+					<ul>
+						<li><p><strong>Session 1:</strong> 31 August - 30 October 2015</p></li>
+						<li><p><strong>Session 2:</strong> 2 November 2015 - 29 January 2016</p></li>
+						<li><p><strong>Session 3:</strong> 1 February - 29 April 2016</p></li>
+						<li><p>Year Level ECA Sign Up Protocols</p></li>
+					</ul>
+
+				<h4>EY2</h4>
+				<p>Sign up limited to a maximum total of 2 ECA activity days. (1 ECA on each activity day)</p>
+
+				<h4>Yr 1</h4>
+				Sign up limited to a maximum total of 3 ECA's
+
+				<h4>Yr 2 - 13</h4>
+					<ul>
+						<li>Free online ECA's sign up limited to a maximum total of 2 ECA's</li>
+						<li>Paid online ECA's sign up is unlimited.</li>
+						<li>All Sports Programs sign up is unlimited.</li>
+					</ul>
+
+				<p>Example: Molly in Yr7 has signed up online for board games and cooking which are free and is on the swimming team, Molly's ECA Schedule - Mon, Tues, Fri Swimming practice, Weds board games and Thurs cooking club.</p>
+
+				<p>A note - if a child has signed up for more than the maximum number of free ECAs the server will nullify all of the students signs up options at the end of the sign up period.</p>
+
+				<div class="alert alert-success" role="alert"><h4>New Online Payment Option for ECA's</h4>
+
+					<p>There is an online payment system for your ECA selections. You will have the option to pay online at the end of the sign-up process.</p>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+	
+<!-- Shortlist Modal -->
+
+<div id="shortList" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">My Short List</h4>
+			</div>
+			<div class="modal-body">
+				<h3>My short list</h3>
+				<div class="panel-group" id="accordion-sample">
+					<div class="panel panel-info" ng-repeat="weekday in data.ecas | unique: 'day' as daysResults ">
+						<div class="panel-heading">
+						<h4 class="panel-title">
+							{{weekday.day}}										
+						</h4>
+						</div>
+						<div id="accordion-tuesday">
+							<div class="panel-body">
+
+								<div ng-repeat="activity in myEcas | filter: {day : weekday.day} as day">
+
+									<p>{{ activity.name }}</p>
+								</div>
+
+								<div ng-if="day.length > 1" class="alert alert-warning alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								<strong>Notice!</strong> You have overlapping activities!
+								</div>										
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+	
 <!-- This is the left sidebar-->
 	<div class="row-offcanvas row-offcanvas-left">
 		<div id="sidebar" class="sidebar-offcanvas">
@@ -113,54 +215,130 @@
 		
 		<ng-include src="'pages/sidebar.html'"></ng-include>
 		
+			
 	<!--	
-		  <div class="visible-lg" id="sidebar-right">
-		      <div class="col-md-12">
-		        <h3>Sidebar (fixed-right)</h3>
-						<div class="panel-group" id="accordion-sample">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-sample-one">
-											Heading One
-										</a>
-									</h4>
-								</div>
-								<div id="accordion-sample-one" class="panel-collapse collapse in">
-									<div class="panel-body">
-										Sample content
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-sample" href="#accordion-sample-two">
-											Heading Two
-										</a>
-									</h4>
-								</div>
-								<div id="accordion-sample-two" class="panel-collapse collapse">
-									<div class="panel-body">
-										Sample content
-									</div>
-								</div>
-							</div>
-						</div>
-		      </div>
-		  </div>
+	
 -->
+		
 <!-- This is the main Content area -->
 		
 		  <p class="visible-xs">
 			<button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-right"></i></button>
 		  </p>
+		 	<div class="main ng-cloak" id="main"><!-- Adding the controller( ng-controller="ActivityController") to this div/part of the page-->
+	      		<div class="col-xs-12 tight">
+					
+					<!-- This is the main Content area -->
+	 		  
+				<md-content>
+					  <md-tabs role="tablist">
+							<!-- ng-class will apply .active class to selected tab with the isSelected()  | filter:filtText-->
+						  <!-- ng-click event added to the tab passing the number to the select() function -->
+						  <!--  ng-repeat="weekday in data.ecas | unique: 'day' as daysResults " -->
+						   <md-tab role="presentation" ng-class="{active:isSelected(1)}"                     
+							 ng-click="select(1)" aria-controls="monday"
+							  role="tab" label="Monday"></md-tab>
+						   <md-tab role="presentation" ng-class="{active:isSelected(2)}"
+							 ng-click="select(2)" aria-controls="tuesday"
+							  role="tab" label="Tuesday"></md-tab>
+						   <md-tab role="presentation" ng-class="{active:isSelected(3)}"
+							 ng-click="select(3)" aria-controls="wednesday"
+							  role="tab" label="Wednesday"></md-tab>
+						   <md-tab role="presentation" ng-class="{active:isSelected(4)}"
+							  ng-click="select(4)" aria-controls="thursday"
+							  role="tab" label="Thursday"></md-tab>
+						   <md-tab role="presentation" ng-class="{active:isSelected(5)}"
+							 ng-click="select(5)" aria-controls="friday"
+							  role="tab" label="Friday"></md-tab>
+						  <md-tab role="presentation" ng-class="{active:isSelected(6)}"
+							  ng-click="select(6)" aria-controls="saturday"
+							  role="tab" label="Saturday"></md-tab>
+						   <md-tab role="presentation" ng-class="{active:isSelected(7)}"
+							 ng-click="select(7)" aria-controls="sunday"
+							  role="tab" label="Sunday"></md-tab>
+						  <md-tab role="presentation" ng-class="{active:isSelected(8)}"                     
+							 ng-click="select(8)" aria-controls="All"
+							  role="tab" label="All"></md-tab> 
+					  </md-tabs>
+				</md-content>
 
-		<ng-include src="'pages/ecaPanel3.html'"></ng-include>	
+			  <div ng-cloak class="panel panel-info" ng-repeat="eca in filteredEcas = (data.ecas 
+					| filter:searchquery | filter:{ day:filtText } | filter: filterCategory | filter: search)">
+				<div class="panel-heading">
+				<h3 class="panel-title">{{ eca.name }}</h3>
+
+				</div>
+				<div class="panel-body">
+					<div class="media">
+						<div class="media-left">
+							<a href="#">
+                         <img ng-cloak class="media-object img-thumbnail" ng-src={{eca.image}} alt="{{eca.name}}">
+                         </a>
+						</div>
+						<div ng-cloak class="media-body">
+							<p>{{ eca.desc1 }}</p>
+							<p>{{ eca.desc2 }}</p>
+							<p ng-hide="eca.id">{{ eca.desc3 }}</p>
+							<p ng-hide="eca.id">{{ eca.desc4 }}</p>
+							<p ng-hide="eca.id">{{ eca.desc5 }}</p>
+							<p ng-hide="eca.id">{{ eca.desc6 }}</p>
+						</div>
+						<div class="panel-footer">
+							<div class="row">
+								<div class="table-responsive">
+								  <table class="table table-striped">
+									  <tr>
+										  <th>Price</th>
+										  <th>Year-level</th>
+										  <th>Time</th>
+										  <th>
+											  <md-button  ng-click="eca.id = !eca.id" ng-model="eca.id"
+												ng-true-value="true" ng-false-value="false" md-no-ink class="md-primary pull-right">
+												{{ !eca.id ? 'Hide Details' : 'Show Details'}}
+											  </md-button>
+										  </th>
+									  </tr>
+									  <tr>
+										  <td>{{ eca.price }}</td>
+										  <td>{{ eca.grade }}</td>
+										  <td>{{ eca.time }}</td>
+										  <td>
+											  <md-button ng-if="myEcas.indexOf(eca)" ng-click="addEca(eca, myEcas)" 
+										class="md-raised md-primary pull-right">Add this now &raquo;</md-button>
+											  <md-button ng-if="!myEcas.indexOf(eca)" ng-click="addEca(eca, myEcas)" 
+										class="md-raised md-warn pull-right">&#171; Remove this</md-button>
+										  </td>
+										  
+									  </tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-if="filteredEcas.length === 0" >
+				<p style="padding: 10px;"></p>
+				<div class="alert alert-warning alert-dismissible" role="alert">
+					
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					   <span aria-hidden="true">&times;</span>
+					</button>
+					<strong>Notice!</strong> There are no results for this search
+				</div>
+			</div>
+			  
+
+	<!-- End Page -->
+							
+				<!--	<ng-include src="'pages/ecaPanel3.html'"></ng-include>  -->
+			 	</div>
+			 </div>
+	<!--	<ng-view></ng-view>	-->
 		
+	</div><!--/row-offcanvas -->	
 		
-		
-	</div><!--/row-offcanvas -->
+	
 
 
 
@@ -175,23 +353,23 @@
 	 	});
 
 	/*Change button class and insert the checkmark*/
-		$(document).ready(function() {
+	/*	$(document).ready(function() {
 		  $('nav button').click(function() {
 				$(this).toggleClass('btn-success btn-info');
 				// $(this).toggleClass('btn-info');
 				$(this).children('i').toggleClass('mdi-navigation-check');
 				$(this).children('i').attr('style', 'font-size: 1em;');
 		  });
-		});
+		});*/
 
 		// Hide panels for this toggle filter - class hideing
-		$(document).ready(function() {
+	/*	$(document).ready(function() {
 		  $('button').click(function() {
 				var day = '.' + $(this).attr('name') + '-panel';
 console.log(day);
 				$(day).toggleClass('hidden');
 		  });
-		});
+		});*/
 
 	 </script>
 
@@ -200,7 +378,11 @@ console.log(day);
 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
 	 <!-- Include all compiled plugins (below), or include individual files as needed -->
 	 <script src="js/bootstrap.min.js"></script>
-	
+	<script type="text/javascript">
+    $(document).ready(function(){
+        $("#instructions").modal('show');
+    });
+	</script>
 	 
 	
 	 <script src="js/script.js"></script>
@@ -226,14 +408,6 @@ console.log(day);
   <!-- Angular Material Library -->
   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
   
-  <!-- Your application bootstrap  -->
-  <script type="text/javascript">    
-    /**
-     * You must include the dependency on 'ngMaterial' 
-     */
-    angular.module('BlankApp', ['ngMaterial']);
-  </script>
-	
 
     <!-- Modules -->
     <script src="js/app.js"></script>

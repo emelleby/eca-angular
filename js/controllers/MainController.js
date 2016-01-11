@@ -1,7 +1,7 @@
 'use strict';
 // Controller
 
-app.controller('MainController', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
+app.controller('MainController', ['$scope', '$http', '$timeout', '$routeParams', function($scope, $http, $timeout, $routeParams) {
 	
   $scope.title = 'Fixed + Fluid Bootstrap Template with Off-canvas Sidebar';
 	
@@ -9,7 +9,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 	
 	$http.get('../data/ecadata.json').then(function (response) {
 			$scope.data = response.data;
-			console.log($scope.data);
+			//console.log($scope.data);
 		})
 		$scope.cost = '';
 		$scope.free = '';
@@ -32,7 +32,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 			if (idx > -1) list.splice(idx, 1);
 			else list.push(item.category);
 		  };
-
+			// Returns whether item exists in the list
 		  $scope.exists = function (item, list) {
 			return list.indexOf(item.category) > -1;
 		  };
@@ -77,14 +77,17 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 	*/
 	// Tabs from Bootstrap
 	
-                  $scope.tab = 1;
+                  $scope.tab = 8;
 
-                  $scope.filtText = 'Monday';
+                  $scope.filtText = "";
 
                   $scope.select = function(setTab) {
                     $scope.tab = setTab;
-                    
-                    if (setTab === 2) {
+					  
+                     if (setTab === 1) {
+                      $scope.filtText = "Monday";
+                    }					  
+                    else if (setTab === 2) {
                       $scope.filtText = "Tuesday";
                     }
                     else if (setTab === 3) {
@@ -96,8 +99,14 @@ app.controller('MainController', ['$scope', '$http', '$timeout', function($scope
 					  else if (setTab === 5) {
                       $scope.filtText = "Friday";
                     }
+					  else if (setTab === 6) {
+                      $scope.filtText = "Saturday";
+                    }
+					  else if (setTab === 7) {
+                      $scope.filtText = "Sunday";
+                    }
                     else {
-                      $scope.filtText = "Monday";
+                      $scope.filtText = "";
                     }
                   };
 

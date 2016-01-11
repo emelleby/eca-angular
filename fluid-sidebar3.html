@@ -32,6 +32,7 @@
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 			<!--Angular Js-->
 			 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.js"></script>
 
 </head>
 
@@ -121,6 +122,18 @@
 	          <li><a href="#">Section</a></li>
 	          <li><a href="#">Section</a></li>
 	          <li><a href="#">Section</a></li>
+				<div class="checkbox" info="app" ng-repeat="category in data.ecas | unique: 'category' ">
+					<label>
+					  <input type="checkbox" ng-model="AtATime">
+					  {{ category }}
+					</label>
+			  	</div>
+				<div class="checkbox">
+					<label>
+					  <input type="checkbox" ng-model="threeAtATime">
+					  Open only two at a time
+					</label>
+				</div>
 	        </ul>
 	      </div>
 	  </div><!--End Left Sidebar-->
@@ -153,6 +166,12 @@
 						    <label>
 						      <input type="checkbox" ng-model="oneAtATime">
 						      Open only one at a time
+						    </label>
+						  </div>
+							<div class="checkbox">
+						    <label>
+						      <input type="checkbox" ng-model="twoAtATime">
+						      Open only two at a time
 						    </label>
 						  </div>
 						  <uib-accordion close-others="oneAtATime">

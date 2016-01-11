@@ -1,11 +1,11 @@
 <!-- This is the main Content area -->
-	  <div class="main ng-cloak" id="main"><!-- Adding the controller( ng-controller="ActivityController") to this div/part of the page-->
-	      <div class="col-md-12 tight">
-		  
+	 		  
 				<md-content>
 					  <md-tabs role="tablist">
 							<!-- ng-class will apply .active class to selected tab with the isSelected()  | filter:filtText-->
 						  <!-- ng-click event added to the tab passing the number to the select() function -->
+						  <!--  ng-repeat="weekday in data.ecas | unique: 'day' as daysResults " -->
+						  
 						   <md-tab role="presentation" ng-class="{active:isSelected(1)}"                     
 							 ng-click="select(1)" aria-controls="monday"
 							  role="tab" label="Monday"></md-tab>
@@ -17,15 +17,24 @@
 							  role="tab" label="Wednesday"></md-tab>
 						   <md-tab role="presentation" ng-class="{active:isSelected(4)}"
 							  ng-click="select(4)" aria-controls="thursday"
-							  role="tab" label="Thursday"></md-tab>
-						   <md-tab role="presentation" ng-class="{active:isSelected(5)}"
-							 ng-click="select(5)" aria-controls="friday"
-							  role="tab" label="Friday"></md-tab>
+							  role="tab" label="Thursday"></md-tab>	
+						  <md-tab role="presentation" ng-class="{active:isSelected(5)}"
+							  ng-click="select(5)" aria-controls="friday"
+							  role="tab" label="Friday"></md-tab>	
+						  <md-tab role="presentation" ng-class="{active:isSelected(6)}"
+							  ng-click="select(6)" aria-controls="saturday"
+							  role="tab" label="Saturday"></md-tab>
+						   <md-tab role="presentation" ng-class="{active:isSelected(7)}"                     
+							 ng-click="select(7)" aria-controls="sunday"
+							  role="tab" label="Sunday"></md-tab>
+						  <md-tab role="presentation" ng-class="{active:isSelected(8)}"                     
+							 ng-click="select(8)" aria-controls="All"
+							  role="tab" label="All"></md-tab> 
 					  </md-tabs>
 				</md-content>
 
 			  <div class="panel panel-info" ng-repeat="eca in data.ecas 
-					| filter:searchquery | filter:{ day:filtText } | filter:filterCategory | filter: search">
+					| filter:searchquery | filter:{ day:filtText } | filter: filterCategory | filter: search">
 				<div class="panel-heading">
 				<h3 class="panel-title">{{ eca.name }}</h3>
 
@@ -40,10 +49,10 @@
 						<div class="media-body">
 							<p>{{ eca.desc1 }}</p>
 							<p>{{ eca.desc2 }}</p>
-							<p ng-show="toggleModel.id">{{ eca.desc3 }}</p>
-							<p ng-show="toggleModel.id">{{ eca.desc4 }}</p>
-							<p ng-show="toggleModel.id">{{ eca.desc5 }}</p>
-							<p ng-show="toggleModel.id">{{ eca.desc6 }}</p>
+							<p ng-hide="eca.id">{{ eca.desc3 }}</p>
+							<p ng-hide="eca.id">{{ eca.desc4 }}</p>
+							<p ng-hide="eca.id">{{ eca.desc5 }}</p>
+							<p ng-hide="eca.id">{{ eca.desc6 }}</p>
 						</div>
 						<div class="panel-footer">
 							<div class="row">
@@ -54,18 +63,22 @@
 										  <th>Year-level</th>
 										  <th>Time</th>
 										  <th>
-											  <md-button ng-click="toggleModel(eca.id)" ng-model="eca.id"
+											  <md-button  ng-click="eca.id = !eca.id" ng-model="eca.id"
 												ng-true-value="true" ng-false-value="false" md-no-ink class="md-primary">
-												{{ toggleModel.id ? 'Hide Details' : 'Show Details'}}
+												{{ !eca.id ? 'Hide Details' : 'Show Details'}}
 											  </md-button>
-									  	  </th>
+										  </th>
 									  </tr>
 									  <tr>
 										  <td>{{ eca.price }}</td>
 										  <td>{{ eca.grade }}</td>
 										  <td>{{ eca.time }}</td>
-										  <td><md-button ng-click="addEca(eca, myEcas)" 
-										class="md-raised md-primary pull-right">Add this &raquo;</md-button></td>
+										  <td>
+											  <md-button ng-if="myEcas.indexOf(eca)" ng-click="addEca(eca, myEcas)" 
+												class="md-raised md-primary pull-right">Add this now &raquo;</md-button>
+											  <md-button ng-if="!myEcas.indexOf(eca)" ng-click="addEca(eca, myEcas)" 
+												class="md-raised md-warn pull-right">&#171; Remove this</md-button>
+										  </td>
 									  </tr>
 									</table>
 								</div>
@@ -76,7 +89,7 @@
 			</div>
 
 			<p ng-show="(data.ecas | filter:searchquery | filter:{ day:filtText }
-			| filter:filterCategory | filter:search).length==0">There are no results for this search</p>
+			| filter:filterCategory | filter:search).length === 0">There are no results for this search</p>
 			  
-		</div>
-	</div><!-- End Page -->
+
+	<!-- End Page -->

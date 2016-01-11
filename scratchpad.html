@@ -1,0 +1,9 @@
+<md-button  ng-click="eca.id = !eca.id" ng-model="eca.id"
+	ng-true-value="true" ng-false-value="false" md-no-ink class="md-primary">
+	{{ !eca.id ? 'Hide Details' : 'Show Details'}}
+</md-button>
+			  
+<div ng-repeat="activity in myEcas | filter : {day: 'Friday'} as friday">
+
+	<p>{{activity.name}}</p>
+</div>
